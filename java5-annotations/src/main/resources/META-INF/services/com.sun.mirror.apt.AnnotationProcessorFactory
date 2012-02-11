@@ -1,2 +1,3 @@
 xapn.projects.javaprogramming.annotation.customized.todo.apt.TodoAnnotationProcessorFactory
 xapn.projects.javaprogramming.annotation.customized.todo.apt.StandardAnnotationProcessorFactory
+xapn.projects.javaprogramming.annotation.customized.emptyconstructor.apt.EmptyConstructorAnnotationProcessorFactory

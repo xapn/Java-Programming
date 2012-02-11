@@ -5,3 +5,6 @@ mvn clean package
 sh src/main/resources/todo-apt.sh
 or:
 sh src/main/resources/todo-release-apt.sh
+
+# Using the empty package annotations:
+sh src/main/resources/emptyconstructor-apt.sh
