@@ -1,0 +1,7 @@
+# In the project root directory:
+mvn clean package
+
+# Using the todo package annotations:
+sh src/main/resources/todo-apt.sh
+or:
+sh src/main/resources/todo-release-apt.sh
