@@ -246,5 +246,6 @@
 
   <modules>
     <module>java5-annotations</module>
+    <module>dsl-creation</module>
   </modules>
 </project>
