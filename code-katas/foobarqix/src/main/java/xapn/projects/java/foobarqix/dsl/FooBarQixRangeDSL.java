@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import xapn.projects.java.foobarqix.dsl.command.Command;
+import xapn.projects.java.foobarqix.dsl.command.AbstractCommand;
+import xapn.projects.java.foobarqix.dsl.command.ContainCommand;
+import xapn.projects.java.foobarqix.dsl.command.DivideCommand;
 
 /**
  * FooBarQix DSL applicable to a numeric range.
@@ -37,14 +39,14 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
     private int start;
     private int end;
     private FooBarQixDSL dsl;
-    private List<Command> commands;
+    private List<AbstractCommand> commands;
     
     /**
      * Default constructor.
      */
     FooBarQixRangeDSL() {
         dsl = new FooBarQixDSL();
-        commands = new ArrayList<Command>();
+        commands = new ArrayList<AbstractCommand>();
     }
     
     /**
@@ -54,8 +56,8 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
     private void build() {
         for (int current = start; current <= end; current++) {
             dsl.setNumber(current);
-            for (Command command : commands) {
-                command.apply(dsl);
+            for (AbstractCommand command : commands) {
+                command.execute();
             }
             
             if (!dsl.isNumberReplaced()) {
@@ -76,7 +78,7 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
      * @return the {@link FooBarQixRangeDSL} object for chaining method calls
      */
     public FooBarQixRangeDSL contains(int... digits) {
-        commands.add(new Command(Command.OperationEnum.CONTAIN, digits));
+        commands.add(new ContainCommand(dsl, digits));
         return this;
     }
     
@@ -101,7 +103,7 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
      * @return the {@link FooBarQixRangeDSL} object for chaining method calls
      */
     public FooBarQixRangeDSL isDivisibleBy(int divisor) {
-        commands.add(new Command(Command.OperationEnum.DIVISE, divisor));
+        commands.add(new DivideCommand(dsl, divisor));
         return this;
     }
     
@@ -114,7 +116,7 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
         for (Entry<Integer, String> rule : rules.entrySet()) {
             to.append("\n\t").append(rule.getKey()).append(" => ").append(rule.getValue());
         }
-        for (Command command : commands) {
+        for (AbstractCommand command : commands) {
             to.append("\n\t").append(command.toString());
         }
         
