@@ -1,7 +1,7 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl;
+package xapn.projects.foobarqix.dsl;
 
 import java.util.HashMap;
 import java.util.Map;

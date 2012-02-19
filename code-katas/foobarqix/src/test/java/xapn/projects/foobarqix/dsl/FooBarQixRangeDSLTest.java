@@ -1,10 +1,10 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl;
+package xapn.projects.foobarqix.dsl;
 
 import static org.junit.Assert.assertEquals;
-import static xapn.projects.java.foobarqix.dsl.FooBarQixRangeDSL.eachNumberBetween;
+import static xapn.projects.foobarqix.dsl.FooBarQixRangeDSL.eachNumberBetween;
 
 import java.util.Map;
 
@@ -14,8 +14,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import xapn.projects.foobarqix.dsl.FooBarQixRangeDSL;
+
 /**
- * Test Case for {@link xapn.projects.java.foobarqix.dsl.FooBarQixRangeDSL}.
+ * Test Case for {@link xapn.projects.foobarqix.dsl.FooBarQixRangeDSL}.
  * 
  * @author Xavier Pigeon
  */
@@ -37,8 +39,11 @@ public class FooBarQixRangeDSLTest {
     
     /**
      * Test method for
-     * {@link xapn.projects.java.foobarqix.dsl.FooBarQixRangeDSL#eachNumberBetween(int, int)}
+     * {@link xapn.projects.foobarqix.dsl.FooBarQixRangeDSL#eachNumberBetween(int, int)}
      * .
+     * In this test case, we want to change the DSL rules and add the method
+     * chaining, and to get and verify the text according to one given numeric
+     * range before and after changing the rules.
      */
     @Test
     public void testEachNumberBetween() {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl;
+package xapn.projects.foobarqix.dsl;
 
 import java.util.Map;
 
@@ -54,7 +54,8 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
         for (int sequenceIndex = 0; sequenceIndex < numberSequence.length(); sequenceIndex++) {
             for (int digitIndex = 0; digitIndex < digits.length; digitIndex++) {
                 if (numberSequence.subSequence(sequenceIndex, sequenceIndex + 1).equals(
-                        String.valueOf(digits[digitIndex]))) {
+                        String.valueOf(digits[digitIndex]))
+                        && rules.containsKey(digits[digitIndex])) {
                     substitution.append(rules.get(digits[digitIndex]));
                     numberReplaced = true;
                 }
@@ -62,6 +63,17 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
         }
         
         return this;
+    }
+    
+    /**
+     * Get the final text, after the last DSL operation was over. After that, it
+     * will be impossible to apply any additional operation.
+     * 
+     * @return the result of the textual transformation
+     */
+    public String getFinalText() {
+        next();
+        return getTextAndClean();
     }
     
     /**
@@ -78,17 +90,30 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * 
      * @return the substitution
      */
-    public StringBuilder getSubstitution() {
+    StringBuilder getSubstitution() {
         return substitution;
     }
     
     /**
-     * Get the final text.
+     * Get the text in its current state. At this stage and after that, it
+     * remains possible to apply some additional operations.
      * 
      * @return the result of the textual transformation
      */
     public String getText() {
         return substitution.toString();
+    }
+    
+    /**
+     * Get the text in its current state and clean it. After that, it will be
+     * impossible to apply any additional operation.
+     * 
+     * @return the result of the textual transformation
+     */
+    public String getTextAndClean() {
+        String text = substitution.toString();
+        substitution = null;
+        return text;
     }
     
     /**
@@ -100,7 +125,7 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * @return the {@link FooBarQixDSL} object
      */
     public FooBarQixDSL isDivisibleBy(int divisor) {
-        if ((number % divisor) == 0) {
+        if (((number % divisor) == 0) && rules.containsKey(divisor)) {
             substitution.append(rules.get(divisor));
             numberReplaced = true;
         }
@@ -118,13 +143,27 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
     }
     
     /**
+     * Prepare the DSL to process another number before changing and
+     * transforming.
+     */
+    void next() {
+        if (!isNumberReplaced()) {
+            substitution.append(number);
+        }
+    }
+    
+    /**
      * Setter for the field {@code number}
      * 
      * @param number the number to set
      */
-    public void setNumber(int number) {
+    void setNumber(int number) {
         this.number = number;
         numberReplaced = false;
+        
+        if (substitution == null) {
+            substitution = new StringBuilder();
+        }
     }
     
     /**
@@ -132,7 +171,7 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * 
      * @param substitution the substitution to set
      */
-    public void setSubstitution(StringBuilder substitution) {
+    void setSubstitution(StringBuilder substitution) {
         this.substitution = substitution;
     }
     

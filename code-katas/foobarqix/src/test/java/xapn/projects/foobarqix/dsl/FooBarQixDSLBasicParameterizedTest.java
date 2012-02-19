@@ -1,10 +1,10 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl;
+package xapn.projects.foobarqix.dsl;
 
 import static org.junit.Assert.assertEquals;
-import static xapn.projects.java.foobarqix.dsl.FooBarQixDSL.thisNumber;
+import static xapn.projects.foobarqix.dsl.FooBarQixDSL.thisNumber;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,36 +20,37 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Parameterized Test Case for
- * {@link xapn.projects.java.foobarqix.dsl.FooBarQixDSL}.
+ * {@link xapn.projects.foobarqix.dsl.FooBarQixDSL}.
  * 
  * @author Xavier Pigeon
  */
 @RunWith(Parameterized.class)
-public class FooBarQixDSLParameterizedTest {
+public class FooBarQixDSLBasicParameterizedTest {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(FooBarQixDSLParameterizedTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooBarQixDSLBasicParameterizedTest.class);
     
     @Parameters
     public static Collection<Object[]> generateData() {
-        return Arrays.asList(new Object[][] { { 3, 3, "Foo" }, { 5, 5, "Bar" }, { 7, 7, "Qix" } });
+        return Arrays.asList(new Object[][] { { 3, 3, "Foo" }, { 5, 5, "Bar" }, { 7, 7, "Qix" }, { 3, 5, "3" },
+                { 5, 7, "5" }, { 7, 3, "7" }, { 94, 7, "94" }, { 4, 2, "4" }, { 2, 2, "2" } });
     }
     
     // Parameters
     private int inputNumber;
-    private int criteria;
+    private int criterion;
     private String expected;
     
     /**
      * Constructor.
      * 
      * @param inputNumber the input number
-     * @param criteria the criteria to be provided to the DSL operation
+     * @param criterion the criteria to be provided to the DSL operation
      * @param expected the expected result
      */
-    public FooBarQixDSLParameterizedTest(int inputNumber, int criteria, String expected) {
-        LOGGER.debug("Number: " + inputNumber + ", Criteria: " + criteria + ", Expected: " + expected);
+    public FooBarQixDSLBasicParameterizedTest(int inputNumber, int criterion, String expected) {
+        LOGGER.debug("Number: " + inputNumber + ", Criterion: " + criterion + ", Expected: " + expected);
         this.inputNumber = inputNumber;
-        this.criteria = criteria;
+        this.criterion = criterion;
         this.expected = expected;
     }
     
@@ -67,23 +68,23 @@ public class FooBarQixDSLParameterizedTest {
     
     /**
      * Test method for
-     * {@link xapn.projects.java.foobarqix.dsl.FooBarQix#contains(int)}.
+     * {@link xapn.projects.foobarqix.dsl.FooBarQix#contains(int)}.
      */
     @Test
     public void testContains() {
         LOGGER.debug("testContains");
         
-        assertEquals(expected, thisNumber(inputNumber).contains(criteria).getText());
+        assertEquals(expected, thisNumber(inputNumber).contains(criterion).getFinalText());
     }
     
     /**
      * Test method for
-     * {@link xapn.projects.java.foobarqix.dsl.FooBarQix#isDivisibleBy(int)} .
+     * {@link xapn.projects.foobarqix.dsl.FooBarQix#isDivisibleBy(int)} .
      */
     @Test
     public void testDivisibleBy() {
         LOGGER.debug("testDivisibleBy");
         
-        assertEquals(expected, thisNumber(inputNumber).isDivisibleBy(criteria).getText());
+        assertEquals(expected, thisNumber(inputNumber).isDivisibleBy(criterion).getFinalText());
     }
 }

@@ -1,16 +1,16 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl;
+package xapn.projects.foobarqix.dsl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import xapn.projects.java.foobarqix.dsl.command.AbstractCommand;
-import xapn.projects.java.foobarqix.dsl.command.ContainCommand;
-import xapn.projects.java.foobarqix.dsl.command.DivideCommand;
+import xapn.projects.foobarqix.dsl.command.AbstractCommand;
+import xapn.projects.foobarqix.dsl.command.ContainCommand;
+import xapn.projects.foobarqix.dsl.command.DivideCommand;
 
 /**
  * FooBarQix DSL applicable to a numeric range.
@@ -56,13 +56,11 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
     private void build() {
         for (int current = start; current <= end; current++) {
             dsl.setNumber(current);
-            for (AbstractCommand command : commands) {
+            for (ICommand command : commands) {
                 command.execute();
             }
+            dsl.next();
             
-            if (!dsl.isNumberReplaced()) {
-                dsl.getSubstitution().append(current);
-            }
             if (current < end) {
                 dsl.getSubstitution().append(SEPARATOR);
             }
@@ -89,9 +87,7 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
      */
     public String getText() {
         build();
-        String builtResult = dsl.getText();
-        dsl.setSubstitution(new StringBuilder());
-        return builtResult;
+        return dsl.getTextAndClean();
     }
     
     /**
@@ -116,7 +112,7 @@ public class FooBarQixRangeDSL extends AbstractFooBarQixDSL {
         for (Entry<Integer, String> rule : rules.entrySet()) {
             to.append("\n\t").append(rule.getKey()).append(" => ").append(rule.getValue());
         }
-        for (AbstractCommand command : commands) {
+        for (ICommand command : commands) {
             to.append("\n\t").append(command.toString());
         }
         

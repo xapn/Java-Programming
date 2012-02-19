@@ -1,10 +1,10 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl;
+package xapn.projects.foobarqix.dsl;
 
 import static org.junit.Assert.assertEquals;
-import static xapn.projects.java.foobarqix.dsl.FooBarQixRangeDSL.eachNumberBetween;
+import static xapn.projects.foobarqix.dsl.FooBarQixRangeDSL.eachNumberBetween;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Parameterized Test Case for
- * {@link xapn.projects.java.foobarqix.dsl.FooBarQix}.
+ * {@link xapn.projects.foobarqix.dsl.FooBarQix}.
  * 
  * @author Xavier Pigeon
  */
@@ -31,8 +31,7 @@ public class FooBarQixRangeDSLParameterizedTest {
     
     @Parameters
     public static Collection<Object[]> generateData() {
-        return Arrays.asList(new Object[][] { { 51, 51, "FooBar" }, { 53, 53, "BarFoo" }, { 21, 21, "FooQix" },
-                { 13, 13, "Foo" }, { 15, 15, "FooBarBar" }, { 33, 33, "FooFooFoo" },
+        return Arrays.asList(new Object[][] { { 53, 53, "BarFoo" },
                 { 1, 10, "1\n2\nFooFoo\n4\nBarBar\nFoo\nQixQix\n8\nFoo\nBar" } });
     }
     
@@ -68,7 +67,7 @@ public class FooBarQixRangeDSLParameterizedTest {
     
     /**
      * Test method for
-     * {@link xapn.projects.java.foobarqix.dsl.FooBarQix#eachNumberBetween(int, int)}
+     * {@link xapn.projects.foobarqix.dsl.FooBarQix#eachNumberBetween(int, int)}
      * .
      */
     @Test

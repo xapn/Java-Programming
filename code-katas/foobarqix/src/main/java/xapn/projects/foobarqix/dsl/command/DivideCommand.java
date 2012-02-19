@@ -1,16 +1,17 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl.command;
+package xapn.projects.foobarqix.dsl.command;
 
-import xapn.projects.java.foobarqix.dsl.FooBarQixDSL;
+import xapn.projects.foobarqix.dsl.FooBarQixDSL;
+import xapn.projects.foobarqix.dsl.ICommand;
 
 /**
  * Divide Command.
  * 
  * @author Xavier Pigeon
  */
-public class DivideCommand extends AbstractCommand {
+public class DivideCommand extends AbstractCommand implements ICommand {
     
     /**
      * Constructor.

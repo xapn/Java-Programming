@@ -1,18 +1,19 @@
 /**
  * 
  */
-package xapn.projects.java.foobarqix.dsl.command;
+package xapn.projects.foobarqix.dsl.command;
 
 import java.util.Arrays;
 
-import xapn.projects.java.foobarqix.dsl.FooBarQixDSL;
+import xapn.projects.foobarqix.dsl.FooBarQixDSL;
+import xapn.projects.foobarqix.dsl.ICommand;
 
 /**
  * Abstract Command.
  * 
  * @author Xavier Pigeon
  */
-public abstract class AbstractCommand {
+public abstract class AbstractCommand implements ICommand {
     
     protected FooBarQixDSL dsl;
     protected int[] criteria;
@@ -29,8 +30,9 @@ public abstract class AbstractCommand {
     }
     
     /**
-     * Apply the command to the DSL.
+     * {@inheritDoc}
      */
+    @Override
     public abstract void execute();
     
     /**
