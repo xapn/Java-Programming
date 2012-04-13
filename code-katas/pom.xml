@@ -9,11 +9,12 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>xapn.projects.javaprogramming</groupId>
+  <groupId>xapn.javapro</groupId>
   <artifactId>code-katas</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Code Katas</name>
+  <description>My code katas in Java.</description>
 
   <modules>
     <module>foobarqix</module>

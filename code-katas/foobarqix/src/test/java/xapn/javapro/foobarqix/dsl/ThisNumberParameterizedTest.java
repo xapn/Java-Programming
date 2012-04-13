@@ -1,10 +1,10 @@
 /**
  * 
  */
-package xapn.projects.foobarqix.dsl;
+package xapn.javapro.foobarqix.dsl;
 
 import static org.junit.Assert.assertEquals;
-import static xapn.projects.foobarqix.dsl.FooBarQixDSL.thisNumber;
+import static xapn.javapro.foobarqix.dsl.ThisNumber.thisNumber;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,15 +19,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Parameterized Test Case for
- * {@link xapn.projects.foobarqix.dsl.FooBarQix}.
+ * Parameterized Test Case for {@link xapn.javapro.foobarqix.dsl.ThisNumber}.
  * 
  * @author Xavier Pigeon
  */
 @RunWith(Parameterized.class)
-public class FooBarQixDSLParameterizedTest {
+public class ThisNumberParameterizedTest {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(FooBarQixDSLParameterizedTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ThisNumberParameterizedTest.class);
     
     @Parameters
     public static Collection<Object[]> generateData() {
@@ -45,7 +44,7 @@ public class FooBarQixDSLParameterizedTest {
      * @param number the input number
      * @param expectedResult the expected result
      */
-    public FooBarQixDSLParameterizedTest(int number, String expectedResult) {
+    public ThisNumberParameterizedTest(int number, String expectedResult) {
         this.number = number;
         this.expectedResult = expectedResult;
     }
@@ -64,13 +63,12 @@ public class FooBarQixDSLParameterizedTest {
     
     /**
      * Test method for
-     * {@link xapn.projects.foobarqix.dsl.FooBarQix#eachNumberBetween(int, int)}
-     * .
+     * {@link xapn.javapro.foobarqix.dsl.ThisNumber#thisNumber(int)} .
      */
     @Test
-    public void testEachNumberBetween() {
+    public void testThisNumber() {
         String actual = thisNumber(number).isDivisibleBy(3).isDivisibleBy(5).isDivisibleBy(7).contains(3, 5, 7)
-                .getText();
+                .fooBarQix();
         LOGGER.debug("From this number: " + number + " to: " + actual);
         assertEquals(expectedResult, actual);
     }

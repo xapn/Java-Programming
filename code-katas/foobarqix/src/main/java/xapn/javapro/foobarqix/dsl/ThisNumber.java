@@ -1,7 +1,7 @@
 /**
  * 
  */
-package xapn.projects.foobarqix.dsl;
+package xapn.javapro.foobarqix.dsl;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import java.util.Map;
  * 
  * @author Xavier Pigeon
  */
-public class FooBarQixDSL extends AbstractFooBarQixDSL {
+public class ThisNumber extends AbstractFooBarQixDSL {
     
     private static final int DEFAULT_NUMBER = -1;
     
@@ -18,13 +18,13 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * This factory method initiates a DSL-based phrase for a given number.
      * 
      * @param number the number to be analyzed
-     * @return a {@link FooBarQixDSL} object
+     * @return a {@link ThisNumber} object
      */
-    static FooBarQixDSL thisNumber(int number) {
-        FooBarQixDSL dsl = new FooBarQixDSL();
-        dsl.setNumber(number);
-        dsl.numberReplaced = false;
-        return dsl;
+    static ThisNumber thisNumber(int number) {
+        ThisNumber thisNumber = new ThisNumber();
+        thisNumber.setNumber(number);
+        thisNumber.numberReplaced = false;
+        return thisNumber;
     }
     
     private int number;
@@ -34,7 +34,7 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
     /**
      * Default constructor.
      */
-    FooBarQixDSL() {
+    ThisNumber() {
         super();
         substitution = new StringBuilder();
         setNumber(DEFAULT_NUMBER);
@@ -46,9 +46,9 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * 
      * @param digits the digits that will cause the transformation if the
      *            {@code number} contains one of them
-     * @return the {@link FooBarQixDSL} object for chaining method calls
+     * @return the {@link ThisNumber} object for chaining method calls
      */
-    public FooBarQixDSL contains(int... digits) {
+    public ThisNumber contains(int... digits) {
         String numberSequence = Integer.toString(number);
         
         for (int sequenceIndex = 0; sequenceIndex < numberSequence.length(); sequenceIndex++) {
@@ -71,7 +71,7 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * 
      * @return the result of the textual transformation
      */
-    public String getFinalText() {
+    public String fooBarQix() {
         next();
         return getTextAndClean();
     }
@@ -122,9 +122,9 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * 
      * @param divisor the divisor by which the {@code number} will be attempted
      *            to divide
-     * @return the {@link FooBarQixDSL} object
+     * @return the {@link ThisNumber} object
      */
-    public FooBarQixDSL isDivisibleBy(int divisor) {
+    public ThisNumber isDivisibleBy(int divisor) {
         if (((number % divisor) == 0) && rules.containsKey(divisor)) {
             substitution.append(rules.get(divisor));
             numberReplaced = true;
@@ -175,6 +175,9 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
         this.substitution = substitution;
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return "Number: " + number;
@@ -184,9 +187,9 @@ public class FooBarQixDSL extends AbstractFooBarQixDSL {
      * Change the rules that provide the string replacement for a given number.
      * 
      * @param rules the rules to be applied
-     * @return the {@link FooBarQixDSL} object for chaining method calls
+     * @return the {@link ThisNumber} object for chaining method calls
      */
-    public FooBarQixDSL withRules(Map<Integer, String> rules) {
+    public ThisNumber withRules(Map<Integer, String> rules) {
         this.rules = rules;
         return this;
     }

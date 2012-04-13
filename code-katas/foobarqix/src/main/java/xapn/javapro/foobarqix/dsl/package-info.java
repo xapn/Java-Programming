@@ -1,4 +1,4 @@
 /**
  * FooBarQix solution with DSL.
  */
-package xapn.projects.foobarqix.dsl;
+package xapn.javapro.foobarqix.dsl;

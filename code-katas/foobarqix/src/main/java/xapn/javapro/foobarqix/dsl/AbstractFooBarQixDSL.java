@@ -1,7 +1,7 @@
 /**
  * 
  */
-package xapn.projects.foobarqix.dsl;
+package xapn.javapro.foobarqix.dsl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +11,11 @@ import java.util.Map;
  * 
  * @author Xavier Pigeon
  */
-public abstract class AbstractFooBarQixDSL {
+abstract class AbstractFooBarQixDSL {
     
+    private static final String QIX = "Qix";
+    private static final String BAR = "Bar";
+    private static final String FOO = "Foo";
     protected Map<Integer, String> rules;
     
     /**
@@ -20,9 +23,9 @@ public abstract class AbstractFooBarQixDSL {
      */
     public AbstractFooBarQixDSL() {
         rules = new HashMap<Integer, String>();
-        rules.put(3, "Foo");
-        rules.put(5, "Bar");
-        rules.put(7, "Qix");
+        rules.put(3, FOO);
+        rules.put(5, BAR);
+        rules.put(7, QIX);
     }
     
     /**

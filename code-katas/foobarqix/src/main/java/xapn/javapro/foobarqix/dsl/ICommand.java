@@ -1,4 +1,4 @@
-package xapn.projects.foobarqix.dsl;
+package xapn.javapro.foobarqix.dsl;
 
 /**
  * Interface for command encapsulating a DSL operation.

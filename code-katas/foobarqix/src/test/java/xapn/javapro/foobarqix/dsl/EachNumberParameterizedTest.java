@@ -1,10 +1,10 @@
 /**
  * 
  */
-package xapn.projects.foobarqix.dsl;
+package xapn.javapro.foobarqix.dsl;
 
 import static org.junit.Assert.assertEquals;
-import static xapn.projects.foobarqix.dsl.FooBarQixRangeDSL.eachNumberBetween;
+import static xapn.javapro.foobarqix.dsl.EachNumber.eachNumberBetween;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,15 +19,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Parameterized Test Case for
- * {@link xapn.projects.foobarqix.dsl.FooBarQix}.
+ * Parameterized Test Case for {@link xapn.javapro.foobarqix.dsl.EachNumber}.
  * 
  * @author Xavier Pigeon
  */
 @RunWith(Parameterized.class)
-public class FooBarQixRangeDSLParameterizedTest {
+public class EachNumberParameterizedTest {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(FooBarQixRangeDSLParameterizedTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EachNumberParameterizedTest.class);
     
     @Parameters
     public static Collection<Object[]> generateData() {
@@ -47,7 +46,7 @@ public class FooBarQixRangeDSLParameterizedTest {
      * @param endNumber the range end
      * @param expectedResult the expected result
      */
-    public FooBarQixRangeDSLParameterizedTest(int startNumber, int endNumber, String expectedResult) {
+    public EachNumberParameterizedTest(int startNumber, int endNumber, String expectedResult) {
         this.startNumber = startNumber;
         this.endNumber = endNumber;
         this.expectedResult = expectedResult;
@@ -67,13 +66,13 @@ public class FooBarQixRangeDSLParameterizedTest {
     
     /**
      * Test method for
-     * {@link xapn.projects.foobarqix.dsl.FooBarQix#eachNumberBetween(int, int)}
+     * {@link xapn.javapro.foobarqix.dsl.FooBarQix#eachNumberBetween(int, int)}
      * .
      */
     @Test
     public void testEachNumberBetween() {
         String actual = eachNumberBetween(startNumber, endNumber).isDivisibleBy(3).isDivisibleBy(5).isDivisibleBy(7)
-                .contains(3, 5, 7).getText();
+                .contains(3, 5, 7).fooBarQix();
         LOGGER.debug("From: " + startNumber + " to: " + endNumber + ", result: " + actual);
         assertEquals(expectedResult, actual);
     }

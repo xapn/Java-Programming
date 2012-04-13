@@ -1,12 +1,12 @@
 /**
  * 
  */
-package xapn.projects.foobarqix.dsl.command;
+package xapn.javapro.foobarqix.dsl.command;
 
 import java.util.Arrays;
 
-import xapn.projects.foobarqix.dsl.FooBarQixDSL;
-import xapn.projects.foobarqix.dsl.ICommand;
+import xapn.javapro.foobarqix.dsl.ICommand;
+import xapn.javapro.foobarqix.dsl.ThisNumber;
 
 /**
  * Abstract Command.
@@ -15,7 +15,7 @@ import xapn.projects.foobarqix.dsl.ICommand;
  */
 public abstract class AbstractCommand implements ICommand {
     
-    protected FooBarQixDSL dsl;
+    protected ThisNumber thisNumber;
     protected int[] criteria;
     
     /**
@@ -24,8 +24,8 @@ public abstract class AbstractCommand implements ICommand {
      * @param operation
      * @param criteria
      */
-    public AbstractCommand(FooBarQixDSL dsl, int... criteria) {
-        this.dsl = dsl;
+    public AbstractCommand(ThisNumber thisNumber, int... criteria) {
+        this.thisNumber = thisNumber;
         this.criteria = criteria;
     }
     
@@ -53,6 +53,9 @@ public abstract class AbstractCommand implements ICommand {
         this.criteria = criteria;
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return Arrays.toString(criteria);
