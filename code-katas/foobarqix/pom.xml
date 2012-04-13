@@ -36,11 +36,18 @@
   </build>
 
   <dependencies>
+    <!-- Testing Frameworks -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
+    <!-- Testing Utilities -->
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-assert</artifactId>
+    </dependency>
 
+    <!-- Logging Frameworks -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>

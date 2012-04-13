@@ -4,6 +4,7 @@
 package xapn.javapro.foobarqix.dsl;
 
 import static org.junit.Assert.assertEquals;
+import static xapn.javapro.foobarqix.dsl.EachNumber.eachNumber;
 import static xapn.javapro.foobarqix.dsl.EachNumber.eachNumberBetween;
 
 import java.util.Arrays;
@@ -66,7 +67,19 @@ public class EachNumberParameterizedTest {
     
     /**
      * Test method for
-     * {@link xapn.javapro.foobarqix.dsl.FooBarQix#eachNumberBetween(int, int)}
+     * {@link xapn.javapro.foobarqix.dsl.EachNumber#eachNumber()} .
+     */
+    @Test
+    public void testEachNumber() {
+        String actual = eachNumber().between(startNumber).and(endNumber).isDivisibleBy(3).isDivisibleBy(5)
+                .isDivisibleBy(7).contains(3, 5, 7).fooBarQix();
+        LOGGER.debug("From: " + startNumber + " to: " + endNumber + ", result: " + actual);
+        assertEquals(expectedResult, actual);
+    }
+    
+    /**
+     * Test method for
+     * {@link xapn.javapro.foobarqix.dsl.EachNumber#eachNumberBetween(int, int)}
      * .
      */
     @Test

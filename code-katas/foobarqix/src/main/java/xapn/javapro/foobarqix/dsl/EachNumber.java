@@ -23,6 +23,15 @@ public class EachNumber extends AbstractFooBarQixDSL {
     /**
      * Initiate a DSL-based phrase for each integer into the range.
      * 
+     * @return a {@link Between} object
+     */
+    static Between eachNumber() {
+        throw new RuntimeException("Not yet implemented");
+    }
+    
+    /**
+     * Initiate a DSL-based phrase for each integer into the range.
+     * 
      * @param start the range start
      * @param end the end range
      * @return a {@link EachNumber} object
