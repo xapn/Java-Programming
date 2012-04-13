@@ -1,5 +1,7 @@
 package xapn.javapro.foobarqix.dsl;
 
+import static xapn.javapro.foobarqix.dsl.EachNumber.eachNumberBetween;
+
 /**
  * FooBarQix DSL element.
  * 
@@ -14,6 +16,8 @@ public class Between {
      */
     public class And {
         
+        private int start;
+        
         /**
          * Each number between... and...
          * 
@@ -21,11 +25,9 @@ public class Between {
          * @return an {@link EachNumber} object
          */
         public EachNumber and(int end) {
-            throw new RuntimeException("Not yet implemented");
+            return eachNumberBetween(start, end);
         }
     }
-    
-    private int start;
     
     /**
      * Each number between...
@@ -34,6 +36,8 @@ public class Between {
      * @return an {@link And} object
      */
     public And between(int start) {
-        throw new RuntimeException("Not yet implemented");
+        And and = new And();
+        and.start = start;
+        return and;
     }
 }

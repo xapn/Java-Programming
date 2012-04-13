@@ -26,7 +26,7 @@ public class EachNumber extends AbstractFooBarQixDSL {
      * @return a {@link Between} object
      */
     static Between eachNumber() {
-        throw new RuntimeException("Not yet implemented");
+        return new Between();
     }
     
     /**

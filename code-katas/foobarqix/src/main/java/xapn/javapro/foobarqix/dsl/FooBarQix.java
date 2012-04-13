@@ -16,7 +16,7 @@ public class FooBarQix {
      * @return a {@link Between} object
      */
     public static Between eachNumber() {
-        throw new RuntimeException("Not yet implemented");
+        return new Between();
     }
     
     /**
