@@ -13,13 +13,15 @@ import java.util.Map;
  */
 public class GivenRules {
     
+    private Map<Integer, String> rules;
+    
     /**
      * Default constructor.
      * 
-     * @param rules
+     * @param rules the rules to be applied
      */
     GivenRules(Map<Integer, String> rules) {
-        throw new RuntimeException("Not yet implemented");
+        this.rules = rules;
     }
     
     /**
@@ -28,7 +30,7 @@ public class GivenRules {
      * @return a {@link Between} object
      */
     public Between eachNumber() {
-        throw new RuntimeException("Not yet implemented");
+        return new Between(rules);
     }
     
     /**
@@ -37,6 +39,6 @@ public class GivenRules {
      * @return a {@link ThisNumber} object
      */
     public ThisNumber thisNumber(int number) {
-        throw new RuntimeException("Not yet implemented");
+        return ThisNumber.thisNumber(number).withRules(rules);
     }
 }

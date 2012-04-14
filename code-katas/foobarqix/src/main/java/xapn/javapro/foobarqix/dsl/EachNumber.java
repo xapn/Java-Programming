@@ -16,7 +16,7 @@ import xapn.javapro.foobarqix.dsl.command.DivideCommand;
  * 
  * @author Xavier Pigeon
  */
-public class EachNumber extends AbstractFooBarQixDSL {
+public class EachNumber {
     
     private static final String SEPARATOR = "\n";
     
@@ -98,6 +98,10 @@ public class EachNumber extends AbstractFooBarQixDSL {
         return thisNumber.getTextAndClean();
     }
     
+    public Map<Integer, String> getRules() {
+        return thisNumber.getRules();
+    }
+    
     /**
      * Apply the textual transformation of the numeric range according to the
      * DSL rules if the range numbers are divisible by a given divisor.
@@ -111,13 +115,16 @@ public class EachNumber extends AbstractFooBarQixDSL {
         return this;
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         StringBuilder to = new StringBuilder();
         to.append("From: " + start);
         to.append(", to: " + end);
         
-        for (Entry<Integer, String> rule : rules.entrySet()) {
+        for (Entry<Integer, String> rule : thisNumber.getRules().entrySet()) {
             to.append("\n\t").append(rule.getKey()).append(" => ").append(rule.getValue());
         }
         for (ICommand command : commands) {
@@ -134,7 +141,7 @@ public class EachNumber extends AbstractFooBarQixDSL {
      * @return the {@link ThisNumber} object for chaining method calls
      */
     public EachNumber withRules(Map<Integer, String> rules) {
-        thisNumber.withRules(rules);
+        thisNumber.setRules(rules);
         return this;
     }
 }

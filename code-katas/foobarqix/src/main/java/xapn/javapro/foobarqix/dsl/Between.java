@@ -2,6 +2,8 @@ package xapn.javapro.foobarqix.dsl;
 
 import static xapn.javapro.foobarqix.dsl.EachNumber.eachNumberBetween;
 
+import java.util.Map;
+
 /**
  * FooBarQix DSL element.
  * 
@@ -25,8 +27,30 @@ public class Between {
          * @return an {@link EachNumber} object
          */
         public EachNumber and(int end) {
-            return eachNumberBetween(start, end);
+            EachNumber eachNumber = eachNumberBetween(start, end);
+            
+            if (rules != null) {
+                eachNumber.withRules(rules);
+            }
+            
+            return eachNumber;
         }
+    }
+    
+    private Map<Integer, String> rules;
+    
+    /**
+     * Default constructor.
+     */
+    public Between() {}
+    
+    /**
+     * Constructor.
+     * 
+     * @param rules the rules to be applied
+     */
+    Between(Map<Integer, String> rules) {
+        this.rules = rules;
     }
     
     /**

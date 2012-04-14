@@ -36,4 +36,13 @@ abstract class AbstractFooBarQixDSL {
     public Map<Integer, String> getRules() {
         return rules;
     }
+    
+    /**
+     * Setter for the field {@code rules}
+     * 
+     * @param rules the rules to set
+     */
+    void setRules(Map<Integer, String> rules) {
+        this.rules = rules;
+    }
 }

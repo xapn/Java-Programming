@@ -3,7 +3,10 @@
  */
 package xapn.javapro.foobarqix.dsl;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.collections.MapUtils;
 
 /**
  * FooBarQix facade.
@@ -40,7 +43,7 @@ public class FooBarQix {
      * @param rules the rules to be applied
      */
     public static GivenRules givenRules(Map<Integer, String> rules) {
-        throw new RuntimeException("Not yet implemented");
+        return new GivenRules(rules);
     }
     
     /**
@@ -48,8 +51,9 @@ public class FooBarQix {
      * 
      * @param rules the rules to be applied
      */
+    @SuppressWarnings("unchecked")
     public static GivenRules givenRules(Object[][] rules) {
-        throw new RuntimeException("Not yet implemented");
+        return new GivenRules(MapUtils.putAll(new HashMap<Integer, String>(), rules));
     }
     
     /**
