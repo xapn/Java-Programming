@@ -30,8 +30,8 @@ public class ThisNumberParameterizedTest {
     
     @Parameters
     public static Collection<Object[]> generateData() {
-        return Arrays.asList(new Object[][] { { 51, "FooBar" }, { 53, "BarFoo" }, { 21, "FooQix" }, { 13, "Foo" },
-                { 15, "FooBarBar" }, { 33, "FooFooFoo" } });
+        return Arrays.asList(new Object[][] { { 13, "Foo" }, { 15, "FooBarBar" }, { 21, "FooQix" },
+                { 33, "FooFooFoo" }, { 51, "FooBar" }, { 53, "BarFoo" }, { 75, "FooBarQixBar" } });
     }
     
     // Parameters

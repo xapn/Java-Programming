@@ -78,8 +78,7 @@ public class FooBarQixTest {
      */
     @Test
     public void testGivenRulesObject() {
-        assertThat(givenRules(new Object[][] { { "2", "Two" }, { 3, "Three" } })).isNotNull().isInstanceOf(
-                GivenRules.class);
+        assertThat(givenRules(new Object[][] {})).isNotNull().isInstanceOf(GivenRules.class);
     }
     
     /**

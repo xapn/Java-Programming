@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Abstract FooBarQix DSL.
+ * Rule Policy.
  * 
  * @author Xavier Pigeon
  */
-abstract class AbstractFooBarQixDSL {
+class RulePolicy {
     
     private static final String QIX = "Qix";
     private static final String BAR = "Bar";
@@ -21,7 +21,7 @@ abstract class AbstractFooBarQixDSL {
     /**
      * Constructor.
      */
-    public AbstractFooBarQixDSL() {
+    public RulePolicy() {
         rules = new HashMap<Integer, String>();
         rules.put(3, FOO);
         rules.put(5, BAR);

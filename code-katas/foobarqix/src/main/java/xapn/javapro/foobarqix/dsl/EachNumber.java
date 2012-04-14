@@ -12,7 +12,7 @@ import xapn.javapro.foobarqix.dsl.command.ContainCommand;
 import xapn.javapro.foobarqix.dsl.command.DivideCommand;
 
 /**
- * FooBarQix DSL applicable to a numeric range.
+ * FooBarQix DSL element applicable to a numeric range.
  * 
  * @author Xavier Pigeon
  */
@@ -95,10 +95,10 @@ public class EachNumber {
      */
     public String fooBarQix() {
         build();
-        return thisNumber.getTextAndClean();
+        return thisNumber.textAndClean();
     }
     
-    public Map<Integer, String> getRules() {
+    Map<Integer, String> getRules() {
         return thisNumber.getRules();
     }
     
@@ -140,7 +140,7 @@ public class EachNumber {
      * @param rules the rules to be applied
      * @return the {@link ThisNumber} object for chaining method calls
      */
-    public EachNumber withRules(Map<Integer, String> rules) {
+    EachNumber withRules(Map<Integer, String> rules) {
         thisNumber.setRules(rules);
         return this;
     }
