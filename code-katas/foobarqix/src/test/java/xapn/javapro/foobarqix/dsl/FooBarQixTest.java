@@ -6,7 +6,10 @@ package xapn.javapro.foobarqix.dsl;
 import static org.fest.assertions.Assertions.assertThat;
 import static xapn.javapro.foobarqix.dsl.FooBarQix.eachNumber;
 import static xapn.javapro.foobarqix.dsl.FooBarQix.eachNumberBetween;
+import static xapn.javapro.foobarqix.dsl.FooBarQix.givenRules;
 import static xapn.javapro.foobarqix.dsl.FooBarQix.thisNumber;
+
+import java.util.Collections;
 
 import org.junit.After;
 import org.junit.Before;
@@ -58,6 +61,25 @@ public class FooBarQixTest {
     @Test
     public void testEachNumberBetween() {
         assertThat(eachNumberBetween(1, 3)).isNotNull().isInstanceOf(EachNumber.class);
+    }
+    
+    /**
+     * Test method for
+     * {@link xapn.javapro.foobarqix.dsl.FooBarQix#givenRules(java.util.Map)}.
+     */
+    @Test
+    public void testGivenRulesMap() {
+        assertThat(givenRules(Collections.<Integer, String> emptyMap())).isNotNull().isInstanceOf(GivenRules.class);
+    }
+    
+    /**
+     * Test method for
+     * {@link xapn.javapro.foobarqix.dsl.FooBarQix#givenRules(Object[][])}.
+     */
+    @Test
+    public void testGivenRulesObject() {
+        assertThat(givenRules(new Object[][] { { "2", "Two" }, { 3, "Three" } })).isNotNull().isInstanceOf(
+                GivenRules.class);
     }
     
     /**

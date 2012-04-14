@@ -3,6 +3,8 @@
  */
 package xapn.javapro.foobarqix.dsl;
 
+import java.util.Map;
+
 /**
  * FooBarQix facade.
  * 
@@ -11,7 +13,8 @@ package xapn.javapro.foobarqix.dsl;
 public class FooBarQix {
     
     /**
-     * Initiate a DSL-based phrase for each integer into the range.
+     * Initiate a DSL-based phrase for each integer into the range.</br>
+     * "Each number..."
      * 
      * @return a {@link Between} object
      */
@@ -20,7 +23,8 @@ public class FooBarQix {
     }
     
     /**
-     * Initiate a DSL-based phrase for each integer into the range.
+     * Initiate a DSL-based phrase for each integer into the range.</br>
+     * "Each number between &lt;start&gt; and &lt;end&gt;..."
      * 
      * @param start the range start
      * @param end the end range
@@ -28,6 +32,24 @@ public class FooBarQix {
      */
     public static EachNumber eachNumberBetween(int start, int end) {
         return EachNumber.eachNumberBetween(start, end);
+    }
+    
+    /**
+     * Initiate a DSL-based phrase starting with the rule definition.
+     * 
+     * @param rules the rules to be applied
+     */
+    public static GivenRules givenRules(Map<Integer, String> rules) {
+        throw new RuntimeException("Not yet implemented");
+    }
+    
+    /**
+     * Initiate a DSL-based phrase starting with the rule definition.
+     * 
+     * @param rules the rules to be applied
+     */
+    public static GivenRules givenRules(Object[][] rules) {
+        throw new RuntimeException("Not yet implemented");
     }
     
     /**
