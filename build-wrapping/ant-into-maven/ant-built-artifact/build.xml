@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     May 28, 2012 3:46:14 PM                                                        
+
+     Ant-built Artifact
+     An artifact built with Ant ant wrapped with Maven.
+                   
+     Xavier Pigeon                                                                
+     ====================================================================== -->
+<project name="Ant-built Artifact" default="build" basedir=".">
+	<description>
+		An artifact built with Ant and wrapped with Maven.
+    </description>
+
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="main-class" value="xapn.javapro.buildwrapping.HelloWorld" />
+	<property name="artifact.file.name" value="HelloWorld.jar" />
+	<property name="dist.dir" value="dist" />
+
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="Deletes all generated files.">
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
+
+	<!-- ================================= 
+          target: clean-all              
+         ================================= -->
+	<target name="clean-all" depends="clean" description="Cleans all the binaries.">
+		<delete dir="${dist.dir}" failonerror="false" />
+	</target>
+
+	<!-- ================================= 
+	      target: compile                      
+	     ================================= -->
+	<target name="compile" description="Compiles the source code.">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	      target: jar                      
+	     - - - - - - - - - - - - - - - - - -->
+	<target name="jar" depends="compile" description="JARs the source code.">
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/${artifact.file.name}" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- ================================= 
+          target: build              
+         ================================= -->
+	<target name="build" depends="clean, jar" description="Makes the complete build.">
+		<mkdir dir="${dist.dir}" />
+		<copy todir="${dist.dir}">
+			<fileset dir="${jar.dir}" />
+		</copy>
+	</target>
+
+	<!-- ================================= 
+          target: build-from-maven              
+         ================================= -->
+	<target name="build-from-maven" depends="jar" description="Builds an artifact with Ant and wrapped with Maven.">
+		<mkdir dir="${dist.dir}" />
+		<copy todir="${dist.dir}">
+			<fileset dir="${jar.dir}" />
+		</copy>
+	</target>
+
+	<!-- ================================= 
+          target: execute              
+         ================================= -->
+	<target name="execute" depends="compile" description="Executes the main class from its binary file.">
+		<java classname="${main-class}" classpath="${classes.dir}" />
+	</target>
+
+	<!-- ================================= 
+          target: run              
+         ================================= -->
+	<target name="run" depends="jar" description="Runs the main class from the final jar.">
+		<java jar="${dist.dir}/${ant.project.name}.jar" fork="true" />
+	</target>
+</project>
