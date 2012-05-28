@@ -17,5 +17,6 @@
   
   <modules>
     <module>ant-into-maven</module>
+    <module>maven-into-ant</module>
   </modules>
 </project>

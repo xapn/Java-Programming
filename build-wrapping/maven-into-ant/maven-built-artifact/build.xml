@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     May 28, 2012 9:31:45 PM                                                        
+
+     Wrapping Ant build    
+     Ant build wrapping a Maven POM.
+                   
+     Xavier Pigeon                                                                
+     ====================================================================== -->
+<project name="Wrapping Ant build" default="default" basedir=".">
+	<description>
+    	Ant build wrapping a Maven POM.
+    </description>
+
+	<property name="source.dir" value="." />
+	<property name="maven.target.dir" location="${basedir}/target" />
+
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" description="Wraps the Maven POM.">
+		<condition property="caller.build.dist.dir.is.set">
+			<isset property="${caller.build.dist.dir}" />
+		</condition>
+		<exec dir="${source.dir}" executable="mvn">
+			<arg line="clean package" />
+		</exec>
+		<echo>Maven-packaged artifact: ${maven.target.dir}/maven-built-artifact-1.0-SNAPSHOT.jar</echo>
+		<echo>Caller build dist directory: ${caller.build.dist.dir}</echo>
+		<copy file="${maven.target.dir}/maven-built-artifact-1.0-SNAPSHOT.jar" todir="${caller.build.dist.dir}" />
+	</target>
+</project>

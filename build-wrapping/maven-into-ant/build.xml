@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Jul 7, 2012 3:26:41 PM                                                        
+
+     Maven into Ant    
+     Main ant build file call sub build file
+                   
+     Xavier Pigeon                                                                
+     ====================================================================== -->
+<project name="Maven into Ant" default="default" basedir=".">
+	<description>
+    	Main ant build file call sub build file.
+    </description>
+
+	<property name="dist.dir" value="target" />
+	<property name="submodule.dir" location="${basedir}/maven-built-artifact" />
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" depends="create-dir, call-sub-buildfile" description="Target by default.">
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: create-dir                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="create-dir" description="Creates needed directories.">
+		<condition property="dist.exists">
+			<not>
+				<available file="${dist.dir}" type="dir" />
+			</not>
+		</condition>
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target:                       
+         - - - - - - - - - - - - - - - - - -->
+	<target name="call-sub-buildfile" description="Calls the sub-buildfile.">
+		<ant dir="${submodule.dir}" antfile="build.xml" inheritall="true">
+			<property name="caller.build.dist.dir" location="${dist.dir}" />
+		</ant>
+	</target>
+</project>
